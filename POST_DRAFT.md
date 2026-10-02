@@ -17,7 +17,7 @@
 ## Frontmatter
 
 ```yaml
-title: "Everyone says triage the loudest issues first. I checked 6,638 real ones with TabPFN. It's worse than random."
+title: "Everyone says triage the loudest issues first. I tested it on 6,638 real issues. It's worse than random."
 description: "Refuting the loudest-first triage rule on 6,638 real issues, scored offline with TabPFN v2."
 tags: devchallenge, hf26challenge, tabpfn, github
 published: false
@@ -312,8 +312,11 @@ Stated in the repo, repeated here:
 - [x] Partner technology named as load-bearing
 - [x] Numbers all trace to `data/results.json`
 - [x] README test count matches `pytest --collect-only` (30, was 19)
-- [ ] Fill `[[FRIEND_NAME]]` and `[[FRIEND_QUOTE]]`
-- [ ] Publish **before Oct 5, 2026, 06:59 UTC** (12:29 PM IST)
+- [x] Fill the "who it is for" paragraph (composite portrait, stated as such)
+- [x] Publish **before Oct 5, 2026, 06:59 UTC** (12:29 PM IST) — published 2026-10-02 19:32 UTC
+- [x] Cover image set on DEV (`assets/cover.png`)
+- [x] Repo embedded, live report embedded, CLI card + two figures from `results.json`
+- [x] Published body re-verified by fetching every image on the rendered page (all 200)
 - [ ] Optional: publish the saved DEV agent session yourself at
       `dev.to/agent_sessions/triagelens-auditing-my-own-dev-submission-before-publishing-it-pjtiwh`
       (DevRelay has no publish endpoint, so it saved unpublished) — only then re-add the
