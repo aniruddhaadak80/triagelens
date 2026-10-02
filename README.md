@@ -147,8 +147,9 @@ rules, all enforced in code:
    triage-time labels is the easiest way to build a model that looks brilliant and
    is worthless.
 4. **Era features are dropped at deployment, kept for analysis.**
-   `issue_number` is the strongest single feature in-corpus (AUC 0.6305) and drops
-   to 0.5364 out-of-time. It is a calendar, not a signal.
+   `issue_number` is the strongest single feature in-corpus (AUC 0.6305 over all
+   6,638 issues). Hold the feature constant and change only the split — **0.6452
+   on a random split, 0.5364 on a time split**. It is a calendar, not a signal.
 
 ## What the tool tells a maintainer
 

@@ -125,10 +125,25 @@ carrying anything.
 
 ## Finding 6 — the era proxy is the strongest feature and the worst one to ship
 
-`issue_number` has the highest single-feature AUC in the corpus (**0.6305**) and
-falls to **0.5364** on the held-out future period. Removing it costs 0.030 AUC
-even on a time split, because the dead rate genuinely moved: **10.1%** closed dead
-in the training period against **19.5%** in the test period.
+`issue_number` is the highest-scoring single feature in the whole corpus
+(**0.6305** over all 6,638 issues). Scored on two different splits, it behaves
+completely differently:
+
+| | AUC |
+| --- | --- |
+| `issue_number`, random split | **0.6452** |
+| `issue_number`, over the whole corpus | 0.6305 |
+| `issue_number`, time split | **0.5364** |
+
+The top two rows are the same quantity estimated two ways and agree within
+sampling noise. The bottom row is the same feature on the same rows, and it
+collapses to barely better than a coin flip. That is the leakage argument in one
+line: change only the split and a solid ~0.64 becomes ~0.54. What the
+whole-corpus figure was really measuring is project age, not issue content.
+
+Removing the feature costs 0.030 AUC even on the time split, because the dead rate
+genuinely moved: **10.1%** of the training period closed dead versus **19.5%** of
+the test period.
 
 This one changed the product. Scoring a real backlog with the era features
 included produced this:

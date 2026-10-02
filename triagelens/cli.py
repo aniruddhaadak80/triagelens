@@ -55,7 +55,8 @@ def cmd_triage(args: argparse.Namespace) -> int:
     out = R.write(ROOT / args.out, backlog, scores,
                   results=R.load_results(), backend=args.model,
                   repo=raw["repo"], top=args.top,
-                  train_seconds=scorer.train_seconds)
+                  train_seconds=scorer.train_seconds,
+                  source_repo=raw["repo"])
     print(f"wrote {out}")
 
     print(f"\nTop {min(10, len(backlog))} most likely to be closed without a fix:")

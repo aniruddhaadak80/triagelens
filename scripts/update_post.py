@@ -31,6 +31,11 @@ PRECISION = f"{RAW}/precision-at-100.png"
 BODY_LEN = f"{RAW}/body-length.png"
 CLI = f"{RAW}/cli-output.png"
 
+# A second, independent host for the generated report. Judges get two working
+# links instead of depending on one, and this one is a plain static deploy with
+# no build step.
+VERCEL_DEMO = "https://triagelens-aniruddha-adaks-projects.vercel.app"
+
 
 def request(path, method="GET", payload=None, timeout=90):
     data = json.dumps(payload).encode("utf-8") if payload is not None else None
@@ -77,6 +82,19 @@ INSERTIONS = [
     (
         "\nMIT licensed. 30 tests.",
         "\n{% embed https://github.com/" + REPO_SLUG + " %}\n\nMIT licensed. 30 tests.",
+    ),
+    # Put a plain clickable demo link at the very top of the Demo section, which is
+    # where a judge looks first. The openbot embed further down stays as a backup.
+    (
+        "\n## Demo\n",
+        f"\n## Demo\n\n**Live demo:** {VERCEL_DEMO}\n",
+    ),
+    # The report is no longer generated-and-never-uploaded; it is deployed. Saying
+    # otherwise in a live post is simply wrong.
+    (
+        "`report.html` is generated locally and never\nuploaded anywhere.*",
+        "`report.html` is generated locally by the CLI, then deployed to\n"
+        "the live demo linked above and committed to the repo.*",
     ),
 ]
 

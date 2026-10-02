@@ -90,6 +90,12 @@ python -m triagelens.cli triage                   # rank the backlog -> report.h
 
 ## Demo
 
+**Live deployed demo:** https://triagelens-aniruddha-adaks-projects.vercel.app
+
+That page is the tool's real output on a real backlog — not a mockup. The site is
+built by `scripts/build_site.py`, which re-runs the CLI and copies the generated
+report, so the deployed demo cannot drift from the code.
+
 I ran it against the **1,716 open issues** in `astral-sh/ruff`. Here is the real
 output, top of the ranking:
 
