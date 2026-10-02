@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "triagelens"
+version = "0.1.0"
+description = "Offline issue-triage instrument for solo maintainers, powered by TabPFN v2"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+keywords = ["github", "triage", "issues", "tabpfn", "open-source-ai", "maintainer"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Quality Assurance",
+]
+
+# torch comes in via tabpfn. CPU wheels are sufficient; no CUDA required.
+dependencies = [
+  "tabpfn>=2.0",
+  "scikit-learn>=1.3",
+  "pandas>=2.0",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+triagelens = "triagelens.cli:main"
+
+[tool.setuptools]
+packages = ["triagelens"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::UserWarning"]
