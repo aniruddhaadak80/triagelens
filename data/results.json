@@ -1,0 +1,659 @@
+{
+  "corpus": {
+    "repo": "astral-sh/ruff",
+    "retrieved_at_utc": "2026-10-02T11:46:20.176280+00:00",
+    "raw_items_returned": 28154,
+    "pull_requests_skipped": 19800,
+    "n_closed": 6638,
+    "n_dead": 898,
+    "n_alive": 5740,
+    "dead_rate": 0.13528171135884304,
+    "n_slow": 1125,
+    "span_first": "2022-08-19T15:27:18Z",
+    "span_last": "2026-10-01T14:02:28Z",
+    "n_features_triage_time": 46,
+    "features": [
+      "title_len",
+      "body_len",
+      "log_body_len",
+      "n_code_fences",
+      "has_code_block",
+      "has_stacktrace",
+      "has_url",
+      "n_urls",
+      "has_version",
+      "has_config_file",
+      "has_cli_flag",
+      "has_lang_fence",
+      "has_checkbox",
+      "n_quote_lines",
+      "title_is_question",
+      "title_starts_question",
+      "title_n_caps",
+      "author_prior_issues",
+      "log_author_prior_issues",
+      "author_is_first_issue",
+      "author_is_frequent",
+      "created_hour",
+      "created_dow",
+      "is_weekend",
+      "issue_number",
+      "log_issue_number",
+      "n_labels",
+      "log_n_labels",
+      "lbl_bug",
+      "lbl_question",
+      "lbl_formatter",
+      "lbl_help wanted",
+      "lbl_documentation",
+      "lbl_good first issue",
+      "lbl_configuration",
+      "lbl_server",
+      "lbl_fuzzer",
+      "lbl_cli",
+      "lbl_needs-decision",
+      "lbl_isort",
+      "lbl_docstring",
+      "lbl_internal",
+      "lbl_needs-info",
+      "lbl_suppression",
+      "lbl_parser",
+      "lbl_testing"
+    ]
+  },
+  "split": {
+    "strategy": "expanding time split (train older issues, test newer)",
+    "train_rows_used": 1500,
+    "test_rows_used": 600,
+    "train_period": [
+      "2022-08-24T13:18:04Z",
+      "2025-03-21T13:04:46Z"
+    ],
+    "test_period": [
+      "2025-03-22T12:08:38Z",
+      "2026-10-01T01:34:12Z"
+    ],
+    "train_dead_rate": 0.10066666666666667,
+    "test_dead_rate": 0.195
+  },
+  "single_feature_auc_whole_corpus": {
+    "issue_number": 0.6304567641603874,
+    "log_issue_number": 0.6304567641603874,
+    "author_is_first_issue": 0.5717415006634954,
+    "lbl_needs-decision": 0.5179657853689578,
+    "lbl_question": 0.5111238291829308,
+    "lbl_needs-info": 0.5065874223012036,
+    "title_starts_question": 0.5064250405469375,
+    "body_len": 0.5057840497272297,
+    "log_body_len": 0.5057840497272297,
+    "created_dow": 0.5037395334580136,
+    "n_code_fences": 0.5037385634355867,
+    "lbl_configuration": 0.5036187656658622,
+    "lbl_formatter": 0.5027915305401861,
+    "lbl_suppression": 0.5027086906249273,
+    "has_lang_fence": 0.5021881765906427,
+    "title_is_question": 0.5018201500818699,
+    "title_len": 0.501106795589114,
+    "has_code_block": 0.5003084671317601,
+    "lbl_docstring": 0.500042486982299,
+    "lbl_isort": 0.49972819971597743,
+    "n_quote_lines": 0.49965797009226853,
+    "lbl_internal": 0.49910311726407114,
+    "lbl_parser": 0.49837560044388224,
+    "lbl_testing": 0.49834145565445476,
+    "has_config_file": 0.4978345219341471,
+    "lbl_server": 0.4968724536911293,
+    "has_checkbox": 0.49494424311090074,
+    "lbl_cli": 0.49464528219892445,
+    "lbl_fuzzer": 0.4937400572701241,
+    "is_weekend": 0.49210847954804715,
+    "has_stacktrace": 0.49051007659297086,
+    "lbl_documentation": 0.48206409132179134,
+    "lbl_good first issue": 0.4813059217929119,
+    "has_version": 0.4729910835538518,
+    "has_url": 0.4670174914444022,
+    "lbl_help wanted": 0.46628221444479795,
+    "created_hour": 0.46455605953609647,
+    "n_urls": 0.46059012284364015,
+    "has_cli_flag": 0.45790898085563736,
+    "title_n_caps": 0.43915214219752763,
+    "author_is_frequent": 0.40053273631686365,
+    "author_prior_issues": 0.39319034556078936,
+    "log_author_prior_issues": 0.39319034556078936,
+    "lbl_bug": 0.36909256342006624,
+    "n_labels": 0.36052357930515355,
+    "log_n_labels": 0.36052357930515355
+  },
+  "split_sensitivity": {
+    "random_split_auc": 0.7869716775599128,
+    "time_split_auc": 0.7869264391003521,
+    "inflation": 4.523845956072581e-05,
+    "era_proxy_feature": "issue_number",
+    "era_proxy_auc_random": 0.6452069716775599,
+    "era_proxy_auc_time": 0.5363557537470581
+  },
+  "holdout_table": [
+    {
+      "model": "always-alive (trivial)",
+      "roc_auc": 0.5,
+      "precision_at_50": 0.18,
+      "precision_at_100": 0.24,
+      "precision_at_10pct": 0.21666666666666667,
+      "recall": 0.0,
+      "flagged_rate": 0.0,
+      "n_test": 600,
+      "base_rate": 0.195
+    },
+    {
+      "model": "single best feature: n_labels",
+      "roc_auc": 0.7398028702376529,
+      "precision_at_50": 0.64,
+      "precision_at_100": 0.61,
+      "precision_at_10pct": 0.6666666666666666,
+      "recall": 0.7777777777777778,
+      "flagged_rate": 0.595,
+      "n_test": 600,
+      "base_rate": 0.195,
+      "oriented": false,
+      "whole_corpus_auc": 0.36052357930515355
+    },
+    {
+      "model": "logistic, all triage-time features",
+      "roc_auc": 0.7869264391003521,
+      "precision_at_50": 0.7,
+      "precision_at_100": 0.56,
+      "precision_at_10pct": 0.65,
+      "recall": 0.7777777777777778,
+      "flagged_rate": 0.445,
+      "n_test": 600,
+      "base_rate": 0.195
+    },
+    {
+      "model": "FOLK BELIEF: loudest-first (leaky features)",
+      "roc_auc": 0.5208012599316947,
+      "precision_at_50": 0.18,
+      "precision_at_100": 0.19,
+      "precision_at_10pct": 0.16666666666666666,
+      "recall": 0.48717948717948717,
+      "flagged_rate": 0.5016666666666667,
+      "n_test": 600,
+      "base_rate": 0.195,
+      "leaky": true,
+      "note": "comments and reactions are only knowable after the issue has run its course; reported to quantify the leak, not to recommend it"
+    },
+    {
+      "model": "logistic, all triage-time (RANDOM split)",
+      "roc_auc": 0.7869716775599128,
+      "precision_at_50": 0.56,
+      "precision_at_100": 0.43,
+      "precision_at_10pct": 0.5166666666666667,
+      "recall": 0.7555555555555555,
+      "flagged_rate": 0.38,
+      "n_test": 600,
+      "base_rate": 0.15,
+      "split": "random"
+    },
+    {
+      "model": "TabPFN v2, triage-time features only",
+      "roc_auc": 0.8202119941250376,
+      "precision_at_50": 0.74,
+      "precision_at_100": 0.65,
+      "precision_at_10pct": 0.7,
+      "recall": 0.8376068376068376,
+      "flagged_rate": 0.5516666666666666,
+      "n_test": 600,
+      "base_rate": 0.195,
+      "fit_predict_seconds": 522.8,
+      "n_estimators": 1
+    },
+    {
+      "model": "TabPFN + resolution-time labels & comments (LEAK)",
+      "roc_auc": 0.8094707225142008,
+      "precision_at_50": 0.74,
+      "precision_at_100": 0.58,
+      "precision_at_10pct": 0.7333333333333333,
+      "recall": 0.8547008547008547,
+      "flagged_rate": 0.5066666666666667,
+      "n_test": 600,
+      "base_rate": 0.195,
+      "leaky": true,
+      "leak_columns": [
+        "comments",
+        "log_comments",
+        "reactions_total",
+        "reactions_heart",
+        "days_to_close",
+        "reslbl_accepted",
+        "reslbl_fixed",
+        "reslbl_fixes",
+        "reslbl_preview",
+        "reslbl_rule",
+        "reslbl_ty"
+      ],
+      "fit_predict_seconds": 616.2
+    }
+  ],
+  "permutation_importance_logistic": [
+    {
+      "feature": "lbl_bug",
+      "auc_drop_mean": 0.11807435720479194,
+      "auc_drop_std": 0.02107774202951238
+    },
+    {
+      "feature": "log_author_prior_issues",
+      "auc_drop_mean": 0.09033108598325984,
+      "auc_drop_std": 0.014400305266256158
+    },
+    {
+      "feature": "log_body_len",
+      "auc_drop_mean": 0.03541257454300928,
+      "auc_drop_std": 0.004828978091388396
+    },
+    {
+      "feature": "log_n_labels",
+      "auc_drop_mean": 0.03177788395179695,
+      "auc_drop_std": 0.005252990524153474
+    },
+    {
+      "feature": "lbl_question",
+      "auc_drop_mean": 0.02989329511068637,
+      "auc_drop_std": 0.007364184568526995
+    },
+    {
+      "feature": "log_issue_number",
+      "auc_drop_mean": 0.017293978163543333,
+      "auc_drop_std": 0.0036998768240719833
+    },
+    {
+      "feature": "lbl_good first issue",
+      "auc_drop_mean": 0.016375572897311973,
+      "auc_drop_std": 0.009321148373779637
+    },
+    {
+      "feature": "has_code_block",
+      "auc_drop_mean": 0.01498823237953668,
+      "auc_drop_std": 0.008623457791613515
+    },
+    {
+      "feature": "title_starts_question",
+      "auc_drop_mean": 0.01017324060802317,
+      "auc_drop_std": 0.004187974413224396
+    },
+    {
+      "feature": "author_is_first_issue",
+      "auc_drop_mean": 0.009051335138291617,
+      "auc_drop_std": 0.0023096238906093044
+    },
+    {
+      "feature": "lbl_needs-decision",
+      "auc_drop_mean": 0.00830280830280825,
+      "auc_drop_std": 0.0033945055146335657
+    },
+    {
+      "feature": "lbl_parser",
+      "auc_drop_mean": 0.007366707366707315,
+      "auc_drop_std": 0.005353319189700724
+    },
+    {
+      "feature": "n_quote_lines",
+      "auc_drop_mean": 0.006915467785032969,
+      "auc_drop_std": 0.004889264590194593
+    },
+    {
+      "feature": "author_prior_issues",
+      "auc_drop_mean": 0.00683760683760678,
+      "auc_drop_std": 0.005254804773833028
+    },
+    {
+      "feature": "lbl_cli",
+      "auc_drop_mean": 0.006750898055245836,
+      "auc_drop_std": 0.007659573309260719
+    },
+    {
+      "feature": "lbl_help wanted",
+      "auc_drop_mean": 0.005575905575905526,
+      "auc_drop_std": 0.0025660240652739205
+    },
+    {
+      "feature": "has_config_file",
+      "auc_drop_mean": 0.004576100228274105,
+      "auc_drop_std": 0.0021310201006932545
+    },
+    {
+      "feature": "title_n_caps",
+      "auc_drop_mean": 0.004560174125391459,
+      "auc_drop_std": 0.0024847146600981557
+    },
+    {
+      "feature": "title_is_question",
+      "auc_drop_mean": 0.0041832563571693624,
+      "auc_drop_std": 0.0018748927577466549
+    },
+    {
+      "feature": "issue_number",
+      "auc_drop_mean": 0.002958716002194217,
+      "auc_drop_std": 0.004537259474309049
+    },
+    {
+      "feature": "n_urls",
+      "auc_drop_mean": 0.0022544283413848177,
+      "auc_drop_std": 0.0027458434286076095
+    },
+    {
+      "feature": "lbl_needs-info",
+      "auc_drop_mean": 0.0021659499920368974,
+      "auc_drop_std": 0.0017460739895162466
+    },
+    {
+      "feature": "has_version",
+      "auc_drop_mean": 0.0018668931712409354,
+      "auc_drop_std": 0.002705010476244892
+    },
+    {
+      "feature": "lbl_testing",
+      "auc_drop_mean": 0.0016191537930667853,
+      "auc_drop_std": 0.006612624645025915
+    },
+    {
+      "feature": "lbl_documentation",
+      "auc_drop_mean": 0.001327175240218681,
+      "auc_drop_std": 0.0007200637479183574
+    },
+    {
+      "feature": "author_is_frequent",
+      "auc_drop_mean": 0.0013094795703490814,
+      "auc_drop_std": 0.0007833407561772594
+    },
+    {
+      "feature": "lbl_formatter",
+      "auc_drop_mean": 0.0012351577568968431,
+      "auc_drop_std": 0.0005055389948341049
+    },
+    {
+      "feature": "has_url",
+      "auc_drop_mean": 0.0008476225867529496,
+      "auc_drop_std": 0.0008229704165786862
+    },
+    {
+      "feature": "lbl_fuzzer",
+      "auc_drop_mean": 0.0008051529790659706,
+      "auc_drop_std": 0.0030519387905865716
+    },
+    {
+      "feature": "has_stacktrace",
+      "auc_drop_mean": 0.0006972093928615086,
+      "auc_drop_std": 0.0028166281723741877
+    },
+    {
+      "feature": "lbl_configuration",
+      "auc_drop_mean": 0.000357452531365543,
+      "auc_drop_std": 0.0005171739273387032
+    },
+    {
+      "feature": "has_cli_flag",
+      "auc_drop_mean": 0.00023181327529148144,
+      "auc_drop_std": 0.0003734121790349335
+    },
+    {
+      "feature": "lbl_docstring",
+      "auc_drop_mean": 0.0,
+      "auc_drop_std": 0.0
+    },
+    {
+      "feature": "is_weekend",
+      "auc_drop_mean": -1.4156535895737399e-05,
+      "auc_drop_std": 0.0005283750418980336
+    },
+    {
+      "feature": "lbl_server",
+      "auc_drop_mean": -3.893047371315017e-05,
+      "auc_drop_std": 0.00044357930182015957
+    },
+    {
+      "feature": "created_hour",
+      "auc_drop_mean": -0.00022473500734374597,
+      "auc_drop_std": 0.0016401136896828027
+    },
+    {
+      "feature": "has_lang_fence",
+      "auc_drop_mean": -0.0002902089858612067,
+      "auc_drop_std": 0.0007489764131218086
+    },
+    {
+      "feature": "lbl_suppression",
+      "auc_drop_mean": -0.0005839571056962978,
+      "auc_drop_std": 0.0008600532475638941
+    },
+    {
+      "feature": "n_labels",
+      "auc_drop_mean": -0.0008104616800269415,
+      "auc_drop_std": 0.0004217958815930041
+    },
+    {
+      "feature": "has_checkbox",
+      "auc_drop_mean": -0.0009573357399444871,
+      "auc_drop_std": 0.0007359973515917018
+    },
+    {
+      "feature": "created_dow",
+      "auc_drop_mean": -0.0012440055918317206,
+      "auc_drop_std": 0.0011370772613791679
+    },
+    {
+      "feature": "lbl_internal",
+      "auc_drop_mean": -0.0014669710321884688,
+      "auc_drop_std": 0.0011542800137689612
+    },
+    {
+      "feature": "lbl_isort",
+      "auc_drop_mean": -0.0017624887190105132,
+      "auc_drop_std": 0.0012619680335700437
+    },
+    {
+      "feature": "body_len",
+      "auc_drop_mean": -0.004892852718939722,
+      "auc_drop_std": 0.004667145287587661
+    },
+    {
+      "feature": "n_code_fences",
+      "auc_drop_mean": -0.006032453858540865,
+      "auc_drop_std": 0.002142030686886124
+    },
+    {
+      "feature": "title_len",
+      "auc_drop_mean": -0.010528923572401871,
+      "auc_drop_std": 0.003668351203748269
+    }
+  ],
+  "logistic_coefficients": {
+    "title_len": -0.1502392135137023,
+    "body_len": -0.32110396234576094,
+    "log_body_len": 0.32288872571416904,
+    "n_code_fences": -0.07950999624421057,
+    "has_code_block": 0.2306368069007437,
+    "has_stacktrace": 0.13632839035010072,
+    "has_url": -0.0358524606670115,
+    "n_urls": -0.11341203175500832,
+    "has_version": -0.10365473446458275,
+    "has_config_file": 0.13688135962300796,
+    "has_cli_flag": -0.019156735354254335,
+    "has_lang_fence": -0.03296867244229966,
+    "has_checkbox": 0.045563340430753704,
+    "n_quote_lines": -0.3819374128835685,
+    "title_is_question": -0.11913267744072321,
+    "title_starts_question": 0.17950283228227,
+    "title_n_caps": -0.10053942369665608,
+    "author_prior_issues": 0.21799197633695766,
+    "log_author_prior_issues": -0.5331343568343184,
+    "author_is_first_issue": -0.1673740108709681,
+    "author_is_frequent": -0.03216265397412411,
+    "created_hour": -0.05443752104678516,
+    "created_dow": -0.046636103616077146,
+    "is_weekend": 0.0263165095836022,
+    "issue_number": -0.2693633169267109,
+    "log_issue_number": 1.2184923905912726,
+    "n_labels": 0.008735266553669841,
+    "log_n_labels": -0.15605130126138042,
+    "lbl_bug": -0.8155328445095987,
+    "lbl_question": -0.19779338592517587,
+    "lbl_formatter": 0.03812851272732747,
+    "lbl_help wanted": -0.0897611939621935,
+    "lbl_documentation": -0.019930091377002756,
+    "lbl_good first issue": -0.6699531968962459,
+    "lbl_configuration": -0.017769243288506202,
+    "lbl_server": -0.03235804867383397,
+    "lbl_fuzzer": -0.4601775946978887,
+    "lbl_cli": -0.48726396928962973,
+    "lbl_needs-decision": 0.14091456558283466,
+    "lbl_isort": -0.07016269225266183,
+    "lbl_docstring": 0.00041188168053828047,
+    "lbl_internal": 0.07501410491405,
+    "lbl_needs-info": -0.08894548940486278,
+    "lbl_suppression": 0.03337201098752378,
+    "lbl_parser": -0.29138275493808896,
+    "lbl_testing": -0.3029799192654156
+  },
+  "rolling_folds": [
+    {
+      "fold": 0,
+      "test_period": [
+        "2025-03-22T12:08:38Z",
+        "2025-06-18T03:17:42Z"
+      ],
+      "n_test": 332,
+      "test_dead_rate": 0.21385542168674698,
+      "always_alive_auc": 0.5,
+      "logistic_auc": 0.7812854136312125,
+      "single_best_auc": 0.2788570503480654,
+      "folk_belief_auc": 0.5410123576709298
+    },
+    {
+      "fold": 1,
+      "test_period": [
+        "2025-06-18T10:29:53Z",
+        "2025-10-05T19:41:39Z"
+      ],
+      "n_test": 332,
+      "test_dead_rate": 0.1536144578313253,
+      "always_alive_auc": 0.5,
+      "logistic_auc": 0.8436257065103622,
+      "single_best_auc": 0.23770148628846557,
+      "folk_belief_auc": 0.5238992394110669
+    },
+    {
+      "fold": 2,
+      "test_period": [
+        "2025-10-06T22:46:55Z",
+        "2026-02-26T19:17:39Z"
+      ],
+      "n_test": 332,
+      "test_dead_rate": 0.1746987951807229,
+      "always_alive_auc": 0.5,
+      "logistic_auc": 0.8186508935313366,
+      "single_best_auc": 0.23285300780266802,
+      "folk_belief_auc": 0.5034293984394664
+    },
+    {
+      "fold": 3,
+      "test_period": [
+        "2026-02-26T19:48:08Z",
+        "2026-10-01T14:02:28Z"
+      ],
+      "n_test": 332,
+      "test_dead_rate": 0.25301204819277107,
+      "always_alive_auc": 0.5,
+      "logistic_auc": 0.7773137480798771,
+      "single_best_auc": 0.23946332565284179,
+      "folk_belief_auc": 0.5006240399385561
+    }
+  ],
+  "tabpfn_rolling_folds": [
+    {
+      "fold": 0,
+      "n_train": 1000,
+      "n_test": 150,
+      "auc": 0.695354801937874,
+      "seconds": 524.0
+    },
+    {
+      "fold": 1,
+      "n_train": 1000,
+      "n_test": 150,
+      "auc": 0.8690153568202349,
+      "seconds": 390.7
+    },
+    {
+      "fold": 2,
+      "n_train": 1000,
+      "n_test": 150,
+      "auc": 0.779431216931217,
+      "seconds": 473.6
+    }
+  ],
+  "h3_body_length_curve": [
+    {
+      "body_len_min": 0,
+      "body_len_max": 0,
+      "n": 155,
+      "dead_rate": 0.03225806451612903
+    },
+    {
+      "body_len_min": 1,
+      "body_len_max": 200,
+      "n": 608,
+      "dead_rate": 0.11348684210526316
+    },
+    {
+      "body_len_min": 201,
+      "body_len_max": 500,
+      "n": 1552,
+      "dead_rate": 0.148840206185567
+    },
+    {
+      "body_len_min": 501,
+      "body_len_max": 1000,
+      "n": 2092,
+      "dead_rate": 0.14388145315487572
+    },
+    {
+      "body_len_min": 1001,
+      "body_len_max": 2000,
+      "n": 1541,
+      "dead_rate": 0.13238157040882545
+    },
+    {
+      "body_len_min": 2001,
+      "body_len_max": 4000,
+      "n": 690,
+      "dead_rate": 0.12753623188405797
+    }
+  ],
+  "h1_loudness": {
+    "auc_log_comments": 0.5120440894593483,
+    "auc_reactions_total": 0.4889238959204737,
+    "median_comments_when_dead": 2.0,
+    "median_comments_when_alive": 2.0,
+    "mean_comments_when_dead": 2.9443207126948776,
+    "mean_comments_when_alive": 3.3533101045296165
+  },
+  "era_proxy_ablation": {
+    "with_era_features": 0.7869264391003521,
+    "without_era_features": 0.756684539293235,
+    "delta": 0.030241899807117112,
+    "dropped": [
+      "issue_number",
+      "log_issue_number"
+    ]
+  },
+  "author_ablation": {
+    "with_author_features": 0.7869264391003521,
+    "without_author_features": 0.7799543451717365,
+    "delta": 0.006972093928615641
+  },
+  "text_ablation": {
+    "with_text_features": 0.7869264391003521,
+    "without_text_features": 0.7986940595636248,
+    "delta": -0.011767620463272732
+  },
+  "runtime_seconds": 2709.6
+}
