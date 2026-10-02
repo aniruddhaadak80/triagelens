@@ -1,12 +1,14 @@
 # DEV submission post — draft
 
-> **Two things in this file need you before it can be published.**
+> **One thing in this file still needs you before it can be published.**
 >
-> 1. `[[FRIEND_NAME]]` / `[[FRIEND_QUOTE]]` — the theme is *Build for a Friend* and I
->    will not invent a person. Fill these in with someone real and one sentence
->    they actually said to you. Search this file for `[[` to find every slot.
-> 2. The agent-session embed (see the last section) — needs your DevRelay login,
->    which is not available in my session.
+> `[[FRIEND_NAME]]` / `[[FRIEND_QUOTE]]` — the theme is *Build for a Friend* and I
+> will not invent a person. Fill these in with someone real and one sentence they
+> actually said to you. Search this file for `[[` to find every slot.
+>
+> Already done: the README test count was corrected to 30 (verified with
+> `pytest --collect-only`), the repo layout lists all 10 committed scripts, and the
+> generated report is published as a live demo and embedded in the Demo section.
 >
 > Everything else is final and every number traces to `data/results.json`.
 
@@ -104,8 +106,10 @@ wrote report.html
                  no triage labels yet
 ```
 
-The generated report is committed at `report.html` in the repo — open it straight from
-disk.
+{% embed https://triagelens-report-astral-sh-ruff-real-generated-3ykaxpxpc6.openbot.site %}
+
+The same generated report is committed at `report.html` in the repo, so it stays readable
+if that host goes away: open it straight from disk.
 
 ## Code
 
@@ -246,30 +250,25 @@ An issue with an empty body is **4.6x less likely to ever ship**. No model, no c
 no GPU. It ships in the tool as a separate model-free flag, because for the most common
 triage action — *ask for more information, or close it* — it may be all you need.
 
-## My Agent Session
+## The reasoning is in the repo, not just the numbers
 
-[[AGENT_SESSION_EMBED]]
+The build reasoning is committed next to the code, so you can audit how I got here
+without rerunning anything:
 
-<!--
-Optional but the announcement says judges like it, and it is also the entry
-requirement for the "Best Use of Entire" category (share the agent sessions behind
-your project in the write-up).
-
-To produce it: save this session with DevRelay and embed the returned liquid tag
-here, or paste the public link.
-
-I could not do this from my own session because the DevRelay MCP tools were not
-connected to it. Everything else in this submission is complete.
--->
+- [`HYPOTHESIS.md`](https://github.com/aniruddhaadak80/triagelens/blob/main/HYPOTHESIS.md)
+  — what I predicted **before** fitting anything, kept in the repo precisely so I could
+  not quietly rewrite it afterwards. Three of my four predictions were wrong.
+- [`FINDINGS.md`](https://github.com/aniruddhaadak80/triagelens/blob/main/FINDINGS.md)
+  — what actually happened, including the parts I got wrong and the refuted hypotheses.
+- [`scripts/validate_post.py`](https://github.com/aniruddhaadak80/triagelens/blob/main/scripts/validate_post.py)
+  — the field-limit guard that runs against this post before it is published, because
+  DEV rejects a limit violation with a bare HTTP 500 and no error body.
 
 ## Prize Categories
 
 - **Best Use of TabPFN** ($200) — TabPFN v2 is the engine, not decoration. It posts the
   best ROC-AUC (0.8202) and the best precision@100 (0.650) of every model tested, on
   strictly-at-creation features, on a held-out future period.
-- **Best Use of Entire** ($100) — the agent session above, plus `HYPOTHESIS.md` and
-  `FINDINGS.md` committed to the repo so the reasoning behind the build is readable
-  without rerunning anything.
 
 Not entering any other category: there is no model API, no server, no deployment target,
 no database and no speech in this project. It is a laptop script.
@@ -305,10 +304,14 @@ Stated in the repo, repeated here:
 - [x] Uses the official template headings
 - [x] Deployed/linked code: `github.com/aniruddhaadak80/triagelens`
 - [x] MIT licence in the repo
-- [x] Live demo artifact committed (`report.html`)
+- [x] Live demo artifact committed (`report.html`) and deployed + embedded
 - [x] "Why open innovation matters" answered with measurements, not adjectives
 - [x] Partner technology named as load-bearing
 - [x] Numbers all trace to `data/results.json`
+- [x] README test count matches `pytest --collect-only` (30, was 19)
 - [ ] Fill `[[FRIEND_NAME]]` and `[[FRIEND_QUOTE]]`
-- [ ] Add the DevRelay agent session embed
 - [ ] Publish **before Oct 5, 2026, 06:59 UTC** (12:29 PM IST)
+- [ ] Optional: publish the saved DEV agent session yourself at
+      `dev.to/agent_sessions/triagelens-auditing-my-own-dev-submission-before-publishing-it-pjtiwh`
+      (DevRelay has no publish endpoint, so it saved unpublished) — only then re-add the
+      **Best Use of Entire** bullet, since that category requires a linked session
