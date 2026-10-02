@@ -71,7 +71,7 @@ network.
 ```bash
 python scripts/fetch_issues.py astral-sh/ruff      # writes data/issues_raw.json
 python -m triagelens.cli triage --top 40 --out report.html
-pytest                                             # 19 tests
+pytest                                             # 30 tests
 ```
 
 ## Two backends, and why one is the default
@@ -165,13 +165,19 @@ triagelens/
   cli.py           fetch / triage / report
 scripts/
   fetch_issues.py  corpus download with provenance
+  validate_post.py field-limit guard for the DEV submission
+  validate_pipeline.py, probe_tabpfn_access.py, smoke_tabpfn.py
+                   access + pipeline checks
+  bench_cpu_budget.py, price_tabpfn.py, compare_weighting.py, eda.py
+                   the measurements behind FINDINGS.md
   show_results.py  pretty-print data/results.json
 data/
   issues_raw.json  8,354 real issues (13 MB), body truncated to 4,000 chars
   results.json     every measurement
-tests/             19 tests
+tests/             30 tests
 HYPOTHESIS.md      pre-registered expectations, written before fitting
 FINDINGS.md        what actually happened, including the wrong parts
+POST_DRAFT.md      the DEV submission for the Hacktoberfest Weekend Challenge
 ```
 
 ## Known limitations
