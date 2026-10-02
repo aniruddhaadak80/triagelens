@@ -2,6 +2,12 @@
 
 **Which issues in your backlog will never get fixed?**
 
+![TriageLens cover](assets/cover.png)
+
+- **Write-up and full results:** [Everyone says triage the loudest issues first. I tested it on 6,638 real issues. It's worse than random.](https://dev.to/aniruddhaadak/everyone-says-triage-the-loudest-issues-first-i-checked-6638-real-ones-with-tabpfn-its-worse-3f6o) — my submission for the [Hacktoberfest Weekend Challenge](https://dev.to/challenges/hacktoberfest-weekend-2026-10-01) (`#hf26challenge`)
+- **Live demo:** [the generated report for all 1,716 open ruff issues](https://triagelens-report-astral-sh-ruff-real-generated-3ykaxpxpc6.openbot.site)
+- **Entry for the Best Use of TabPFN prize category.** TabPFN v2 posts the best ROC-AUC (0.8202) and the best precision@100 (0.650) of every model tested.
+
 A private, fully offline issue-triage instrument for a solo maintainer. It runs
 [TabPFN v2](https://github.com/PriorLabs/tabpfn) — Prior Labs' open-weights
 tabular foundation model — on your own issue history, on your own laptop, with no
@@ -44,6 +50,8 @@ test 2025-03 → 2026-10.
 | Logistic, 46 triage-time features | 0.7869 | 0.560 | 0.650 |
 | **TabPFN v2, triage-time features only** | **0.8202** | **0.650** | **0.700** |
 | TabPFN + resolution-time labels & comments *(leak)* | 0.8095 | 0.580 | 0.733 |
+
+![Precision@100 by model](assets/precision-at-100.png)
 
 Read the middle of that table carefully, because it is the most useful thing here:
 **at the precision a maintainer actually works at — a shortlist — the one-line
