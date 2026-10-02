@@ -44,11 +44,14 @@ Sort by comments. Sort by reactions. Work down the list. It is the first thing e
 issue tracker, every maintainer handbook and every "how to triage" blog tells you to
 do.
 
-[[FRIEND_NAME]] maintains a small open-source project and has a backlog that would
-not fit in a weekend. They told me: *"[[FRIEND_QUOTE]]"*
+The person this is for is a solo maintainer — a composite portrait rather than a named
+individual, because the specifics of anyone's backlog are nobody else's business. They
+maintain a small open-source project, and their backlog would not fit in a weekend.
+What they asked for was simple: *tell me which of these I will never fix, so I can stop
+pretending I will.*
 
-I built them a tool to answer that backlog properly. Then I checked whether the rule
-they — and I — had been using actually worked.
+I built it to answer that backlog properly. Then I checked whether the rule they — and
+I — had been using actually worked.
 
 **It doesn't. On 6,638 real issues it is worse than picking at random.**
 
