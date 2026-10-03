@@ -105,7 +105,7 @@ if "1,716" in body or "1716" in body:
 
 print(f"article: {art['title']}")
 print(f"url    : {art['url']}")
-print(f"tags   : {', '.join(art['tag_list'])}")
+print(f"tags   : {art['tag_list']}")
 print(f"body   : {len(body)} chars")
 print()
 for f in fails:
