@@ -79,7 +79,7 @@ network.
 ```bash
 python scripts/fetch_issues.py astral-sh/ruff      # writes data/issues_raw.json
 python -m triagelens.cli triage --top 40 --out report.html
-pytest                                             # 30 tests
+pytest                                             # 32 tests
 ```
 
 ## Two backends, and why one is the default
@@ -183,7 +183,7 @@ scripts/
 data/
   issues_raw.json  8,354 real issues (13 MB), body truncated to 4,000 chars
   results.json     every measurement
-tests/             30 tests
+tests/             32 tests
 HYPOTHESIS.md      pre-registered expectations, written before fitting
 FINDINGS.md        what actually happened, including the wrong parts
 POST_DRAFT.md      the DEV submission for the Hacktoberfest Weekend Challenge

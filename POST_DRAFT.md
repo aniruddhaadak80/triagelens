@@ -124,7 +124,7 @@ if that host goes away: open it straight from disk.
 
 [**github.com/aniruddhaadak80/triagelens**](https://github.com/aniruddhaadak80/triagelens)
 
-MIT licensed. 30 tests. The corpus — 8,354 real issues with retrieval provenance — is
+MIT licensed. 32 tests. The corpus - 8,354 real issues with retrieval provenance - is
 committed, so every number below is reproducible without re-hitting the GitHub API.
 
 ## How I Built It
@@ -317,7 +317,7 @@ Stated in the repo, repeated here:
 - [x] "Why open innovation matters" answered with measurements, not adjectives
 - [x] Partner technology named as load-bearing
 - [x] Numbers all trace to `data/results.json`
-- [x] README test count matches `pytest --collect-only` (30, was 19)
+- [x] README test count matches `pytest --collect-only` (32, was 19)
 - [x] Fill the "who it is for" paragraph (composite portrait, stated as such)
 - [x] Publish **before Oct 5, 2026, 06:59 UTC** (12:29 PM IST) — published 2026-10-02 19:32 UTC
 - [x] Cover image set on DEV (`assets/cover.png`)

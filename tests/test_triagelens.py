@@ -6,6 +6,11 @@ keep this project honest rather than flattering.
 
 from __future__ import annotations
 
+import os
+import subprocess
+import sys
+from pathlib import Path
+
 import numpy as np
 import pytest
 
@@ -21,6 +26,7 @@ CORPUS = D.load_raw() if (D.DATA_DIR / "issues_raw.json").exists() else None
 # --------------------------------------------------------------------------- #
 # metrics
 # --------------------------------------------------------------------------- #
+
 
 def test_roc_auc_perfect_and_inverted():
     y = np.array([0, 0, 1, 1])
@@ -57,6 +63,7 @@ def test_precision_at_k():
 # splits
 # --------------------------------------------------------------------------- #
 
+
 def test_time_split_is_monotonic_in_time():
     tr, te = E.time_split(100)
     assert tr.max() < te.min(), "train must be strictly older than test"
@@ -77,6 +84,7 @@ def test_random_split_is_actually_random():
 # --------------------------------------------------------------------------- #
 # features: the leakage boundary
 # --------------------------------------------------------------------------- #
+
 
 def test_text_features_detect_structure():
     body = "```python\nimport os\n```\nTraceback (most recent call last):\nhttp://x.dev"
@@ -103,14 +111,23 @@ def test_question_detection():
 
 def test_leaky_columns_are_quarantined():
     """The default feature set must contain nothing knowable only after the fact."""
-    recs = [{
-        "title": "t", "body": "", "labels": ["bug"],
-        "author_login": "a", "author_prior_issues": 1,
-        "author_is_first_issue": 0, "author_is_frequent": 0,
-        "created": D._parse("2024-01-02T03:04:05Z"), "number": 42,
-        "comments": 17, "reactions_total": 3, "reactions_heart": 0,
-        "days_to_close": 5,
-    }]
+    recs = [
+        {
+            "title": "t",
+            "body": "",
+            "labels": ["bug"],
+            "author_login": "a",
+            "author_prior_issues": 1,
+            "author_is_first_issue": 0,
+            "author_is_frequent": 0,
+            "created": D._parse("2024-01-02T03:04:05Z"),
+            "number": 42,
+            "comments": 17,
+            "reactions_total": 3,
+            "reactions_heart": 0,
+            "days_to_close": 5,
+        }
+    ]
     _, names = F.build_matrix(recs)
     leaked = F.leak_columns(names)
     assert leaked == [], f"default features contain post-hoc columns: {leaked}"
@@ -126,12 +143,22 @@ def test_resolution_time_labels_are_not_triage_time_labels():
 
 
 def test_leaky_matrix_really_adds_the_leak():
-    base = {"title": "t", "body": "", "labels": [], "author_login": "a",
-            "author_prior_issues": 0, "author_is_first_issue": 1,
-            "author_is_frequent": 0,
-            "created": D._parse("2024-01-02T00:00:00Z"), "number": 1,
-            "comments": 9, "reactions_total": 2, "reactions_heart": 1,
-            "days_to_close": 3, "labels_extra": None}
+    base = {
+        "title": "t",
+        "body": "",
+        "labels": [],
+        "author_login": "a",
+        "author_prior_issues": 0,
+        "author_is_first_issue": 1,
+        "author_is_frequent": 0,
+        "created": D._parse("2024-01-02T00:00:00Z"),
+        "number": 1,
+        "comments": 9,
+        "reactions_total": 2,
+        "reactions_heart": 1,
+        "days_to_close": 3,
+        "labels_extra": None,
+    }
     base["labels"] = ["fixes"]
     recs = [dict(base)]
     _, clean = F.build_matrix(recs)
@@ -144,6 +171,7 @@ def test_leaky_matrix_really_adds_the_leak():
 # --------------------------------------------------------------------------- #
 # data layer
 # --------------------------------------------------------------------------- #
+
 
 def test_author_features_tolerate_missing_keys():
     f = F.author_features({"author_login": "x"})
@@ -166,8 +194,7 @@ def test_empty_body_rule():
 
 
 def test_evidence_flags_under_specified_issues():
-    ev = T.evidence_for({"body_len": 0, "labels": ["question"],
-                         "author_prior_issues": 0, "n_labels": 0})
+    ev = T.evidence_for({"body_len": 0, "labels": ["question"], "author_prior_issues": 0, "n_labels": 0})
     joined = " ".join(ev)
     assert "empty body" in joined
     assert "labelled question" in joined
@@ -178,24 +205,31 @@ def test_evidence_flags_under_specified_issues():
 # scorer
 # --------------------------------------------------------------------------- #
 
+
 def _toy_corpus():
     recs = []
     for i in range(120):
         dead = i % 5 == 0
-        recs.append({
-            "number": 1000 + i,
-            "title": "why?" if dead else "fix crash",
-            "body": "" if dead else "```python\nx\n```" * 3,
-            "labels": ["question"] if dead else ["bug"],
-            "n_labels": 0 if dead else 2,
-            "author_login": f"u{i}",
-            "author_prior_issues": 0 if dead else 9,
-            "author_is_first_issue": 1 if dead else 0,
-            "author_is_frequent": 0 if dead else 1,
-            "created": D._parse("2024-01-01T00:00:00Z"),
-            "comments": 0, "reactions_total": 0, "reactions_heart": 0,
-            "days_to_close": 1, "dead": int(dead), "slow": 0,
-        })
+        recs.append(
+            {
+                "number": 1000 + i,
+                "title": "why?" if dead else "fix crash",
+                "body": "" if dead else "```python\nx\n```" * 3,
+                "labels": ["question"] if dead else ["bug"],
+                "n_labels": 0 if dead else 2,
+                "author_login": f"u{i}",
+                "author_prior_issues": 0 if dead else 9,
+                "author_is_first_issue": 1 if dead else 0,
+                "author_is_frequent": 0 if dead else 1,
+                "created": D._parse("2024-01-01T00:00:00Z"),
+                "comments": 0,
+                "reactions_total": 0,
+                "reactions_heart": 0,
+                "days_to_close": 1,
+                "dead": int(dead),
+                "slow": 0,
+            }
+        )
     return recs
 
 
@@ -217,8 +251,7 @@ def test_era_features_are_off_by_default():
 
 def test_era_features_can_be_opted_into():
     recs = _toy_corpus()
-    s = T.TriageScorer(backend="logistic", max_train=100,
-                       use_era_features=True).fit(recs)
+    s = T.TriageScorer(backend="logistic", max_train=100, use_era_features=True).fit(recs)
     assert "issue_number" in s.cols
 
 
@@ -244,13 +277,14 @@ def test_score_before_fit_raises():
 # report
 # --------------------------------------------------------------------------- #
 
+
 def test_report_is_self_contained():
     recs = _toy_corpus()
     s = T.TriageScorer(backend="logistic", max_train=100).fit(recs)
     p = s.score(recs[:5], records=recs)
     html = R.render(recs[:5], p, results={}, backend="logistic", repo="o/r", top=5)
     assert html.startswith("<!doctype html>")
-    assert "src=\"http" not in html, "report must not reference remote assets"
+    assert 'src="http' not in html, "report must not reference remote assets"
     assert "<script" not in html, "report must not need JavaScript"
     assert "o/r" in html
 
@@ -274,6 +308,7 @@ def test_report_handles_empty_backlog():
 # corpus-backed tests (skipped without the downloaded corpus)
 # --------------------------------------------------------------------------- #
 
+
 @pytest.mark.skipif(CORPUS is None, reason="corpus not downloaded")
 def test_corpus_provenance_present():
     assert CORPUS["repo"]
@@ -294,3 +329,37 @@ def test_closed_only_and_labels_are_consistent():
     for r in recs[:500]:
         expected = 1 if r["state_reason"] in D.DEAD_REASONS else 0
         assert r["dead"] == expected
+
+
+# --------------------------------------------------------------------------- #
+# committed scripts must actually run
+# --------------------------------------------------------------------------- #
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def _run_script(name: str) -> subprocess.CompletedProcess:
+    env = dict(os.environ)
+    env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    return subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / name)],
+        cwd=ROOT,
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+
+
+def test_eda_script_runs_to_completion():
+    """scripts/eda.py used to die on KeyError: 'author_association'."""
+    r = _run_script("eda.py")
+    assert r.returncode == 0, r.stderr[-2000:]
+    assert "author_association" in r.stdout
+
+
+def test_validate_pipeline_script_runs_to_completion():
+    """scripts/validate_pipeline.py used to die on a logistic_scores TypeError."""
+    pytest.importorskip("sklearn")
+    r = _run_script("validate_pipeline.py")
+    assert r.returncode == 0, r.stderr[-2000:]
+    assert "logistic all triage-time" in r.stdout
